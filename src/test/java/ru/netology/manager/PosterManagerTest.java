@@ -39,7 +39,7 @@ public class PosterManagerTest {
 
     @Test
     public void shouldShowLastTenMovies() {
-        MoviesItem[] actual = manager.showLastMovies();
+        MoviesItem[] actual = manager.PosterManager();
         MoviesItem[] expected = new MoviesItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
         assertArrayEquals(expected, actual);
 
@@ -48,7 +48,7 @@ public class PosterManagerTest {
     @Test
     public void shouldShowLastTenMoviesIfLessMovies() {
         manager.decreasePoster(5);
-        MoviesItem[] actual = manager.showLastMovies();
+        MoviesItem[] actual = manager.PosterManager();
         MoviesItem[] expected = new MoviesItem[]{fifth, fourth, third, second, first};
         assertArrayEquals(expected, actual);
 
@@ -56,7 +56,7 @@ public class PosterManagerTest {
 
     @Test
     public void shouldShowLastMovies() {
-        MoviesItem[] actual = manager.showLastMovies(2);
+        MoviesItem[] actual = manager.PosterManager(2);
         MoviesItem[] expected = new MoviesItem[]{eleventh, tenth};
         assertArrayEquals(expected, actual);
 
@@ -64,7 +64,7 @@ public class PosterManagerTest {
     @Test
     public void shouldShowLastMoviesIfLessMovies() {
         manager.decreasePoster(5);
-        MoviesItem[] actual = manager.showLastMovies(6);
+        MoviesItem[] actual = manager.PosterManager(6);
         MoviesItem[] expected = new MoviesItem[]{fifth, fourth, third, second, first};
         assertArrayEquals(expected, actual);
     }

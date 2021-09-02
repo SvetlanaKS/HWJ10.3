@@ -14,7 +14,7 @@ public class PosterManager {
         items = tmp;
     }
 
-    public MoviesItem[] showLastMovies() {
+    public MoviesItem[] PosterManager() {
         int moviesCount = 10;
         int resultsLenght;
         if (moviesCount > items.length) {
@@ -30,7 +30,7 @@ public class PosterManager {
         return results;
     }
 
-    public MoviesItem[] showLastMovies(int lenght) {
+    public MoviesItem[] PosterManager(int lenght) {
         int resultsLenght;
         if (lenght > items.length) {
             resultsLenght = items.length;
