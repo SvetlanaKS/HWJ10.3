@@ -5,6 +5,14 @@ import ru.netology.domain.MoviesItem;
 public class PosterManager {
     private MoviesItem[] items = new MoviesItem[0];
 
+    public PosterManager() {
+        
+    }
+
+    public PosterManager(MoviesItem[] items) {
+        this.items = items;
+    }
+
     public void add(MoviesItem item) {
         int length = items.length + 1;
         MoviesItem[] tmp = new MoviesItem[length];
@@ -14,7 +22,7 @@ public class PosterManager {
         items = tmp;
     }
 
-    public MoviesItem[] PosterManager() {
+    public MoviesItem[] getLastTen() {
         int moviesCount = 10;
         int resultsLenght;
         if (moviesCount > items.length) {
@@ -30,7 +38,7 @@ public class PosterManager {
         return results;
     }
 
-    public MoviesItem[] PosterManager(int lenght) {
+    public MoviesItem[] getLast(int lenght) {
         int resultsLenght;
         if (lenght > items.length) {
             resultsLenght = items.length;

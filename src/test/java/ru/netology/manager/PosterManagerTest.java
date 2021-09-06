@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class PosterManagerTest {
     private PosterManager manager = new PosterManager();
+    private PosterManager manager1 = new PosterManager();
     private MoviesItem first = new MoviesItem(1, 1, "first", 1, 1);
     private MoviesItem second = new MoviesItem(2, 2, "second", 1, 1);
     private MoviesItem third = new MoviesItem(3, 3, "third", 1, 1);
@@ -35,11 +36,22 @@ public class PosterManagerTest {
         manager.add(ninth);
         manager.add(tenth);
         manager.add(eleventh);
+        manager1.add(first);
+        manager1.add(second);
+        manager1.add(third);
+        manager1.add(fourth);
+        manager1.add(fifth);
+        manager1.add(sixth);
+        manager1.add(seventh);
+        manager1.add(eighth);
+        manager1.add(ninth);
+        manager1.add(tenth);
+        manager1.add(eleventh);
     }
 
     @Test
     public void shouldShowLastTenMovies() {
-        MoviesItem[] actual = manager.PosterManager();
+        MoviesItem[] actual = manager.getLast(10);
         MoviesItem[] expected = new MoviesItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
         assertArrayEquals(expected, actual);
 
@@ -48,23 +60,29 @@ public class PosterManagerTest {
     @Test
     public void shouldShowLastTenMoviesIfLessMovies() {
         manager.decreasePoster(5);
-        MoviesItem[] actual = manager.PosterManager();
+        MoviesItem[] actual = manager.getLastTen();
         MoviesItem[] expected = new MoviesItem[]{fifth, fourth, third, second, first};
         assertArrayEquals(expected, actual);
 
     }
+    @Test
+    public void shouldShowLastTenMoviesIfMoreMovies() {
+        MoviesItem[] actual = manager.getLastTen();
+        MoviesItem[] expected = new MoviesItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second };
+        assertArrayEquals(expected, actual);
 
+    }
     @Test
     public void shouldShowLastMovies() {
-        MoviesItem[] actual = manager.PosterManager(2);
+        MoviesItem[] actual = manager1.getLast(2);
         MoviesItem[] expected = new MoviesItem[]{eleventh, tenth};
         assertArrayEquals(expected, actual);
 
     }
     @Test
     public void shouldShowLastMoviesIfLessMovies() {
-        manager.decreasePoster(5);
-        MoviesItem[] actual = manager.PosterManager(6);
+        manager1.decreasePoster(5);
+        MoviesItem[] actual = manager1.getLast(6);
         MoviesItem[] expected = new MoviesItem[]{fifth, fourth, third, second, first};
         assertArrayEquals(expected, actual);
     }
