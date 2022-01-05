@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class MoviesItem {
     private int id;
-    private int movieId;
     private String movieName;
-    private int movieGenre;
-    private int count;
+    private String movieGenre;
 }

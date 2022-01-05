@@ -4,15 +4,17 @@ import ru.netology.domain.MoviesItem;
 
 public class PosterManager {
     private MoviesItem[] items = new MoviesItem[0];
+    private int count;
+
 
     public PosterManager() {
-        
     }
 
-    public PosterManager(MoviesItem[] items) {
-        this.items = items;
+    public PosterManager(int limit) {
+        this.count = limit;
     }
 
+    //добавление фильма
     public void add(MoviesItem item) {
         int length = items.length + 1;
         MoviesItem[] tmp = new MoviesItem[length];
@@ -22,13 +24,13 @@ public class PosterManager {
         items = tmp;
     }
 
-    public MoviesItem[] getLastTen() {
-        int moviesCount = 10;
+    // вывести фильмы в обратном порядке
+    public MoviesItem[] getLast() {
         int resultsLenght;
-        if (moviesCount > items.length) {
-            resultsLenght = items.length;
+        if (items.length != count) {
+            resultsLenght = count;
         } else {
-            resultsLenght = moviesCount;
+            resultsLenght = items.length;
         }
         MoviesItem[] results = new MoviesItem[resultsLenght];
         for (int i = 0; i < resultsLenght; i++) {
@@ -38,21 +40,7 @@ public class PosterManager {
         return results;
     }
 
-    public MoviesItem[] getLast(int lenght) {
-        int resultsLenght;
-        if (lenght > items.length) {
-            resultsLenght = items.length;
-        } else {
-            resultsLenght = lenght;
-        }
-        MoviesItem[] results = new MoviesItem[resultsLenght];
-        for (int i = 0; i < resultsLenght; i++) {
-            int index = items.length - i - 1;
-            results[i] = items[index];
-        }
-        return results;
-    }
-
+    //удаление фильма
     public void decreasePoster(int newLenght) {
         int lenght = newLenght;
         int index = 0;
@@ -62,5 +50,6 @@ public class PosterManager {
             index++;
         }
         items = tmp;
+        count = tmp.length;
     }
 }
