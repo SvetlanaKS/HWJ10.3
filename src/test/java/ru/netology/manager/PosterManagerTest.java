@@ -20,6 +20,7 @@ public class PosterManagerTest {
     private MoviesItem tenth = new MoviesItem(10, "Sherlock Holmes", "detective");
     private MoviesItem eleventh = new MoviesItem(11, "Alone at home", "comedy");
 
+    //вывести последние 10, при этом в менеджере хранится больше фильмов
     @Test
     public void shouldShowLastTenMovies() {
         int count = 10;
@@ -40,8 +41,9 @@ public class PosterManagerTest {
         assertArrayEquals(expected, actual);
     }
 
+    // вывести все фильмы хранящиеся в менеджере
     @Test
-    public void shouldShowLastTenMoviesIfLessMovies() {
+    public void shouldShowMovies() {
         PosterManager manager = new PosterManager();
         manager.add(first);
         manager.add(second);
@@ -54,7 +56,21 @@ public class PosterManagerTest {
         manager.add(ninth);
         manager.add(tenth);
         manager.add(eleventh);
-        manager.decreasePoster(5);
+        MoviesItem[] actual = manager.getLast();
+        MoviesItem[] expected = new MoviesItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+        assertArrayEquals(expected, actual);
+    }
+
+    //вывести больше фильмов чем хранится в менеджере
+    @Test
+    public void shouldShowLastTenMoviesIfLessMovies() {
+        int count = 10;
+        PosterManager manager = new PosterManager(count);
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
         MoviesItem[] actual = manager.getLast();
         MoviesItem[] expected = new MoviesItem[]{fifth, fourth, third, second, first};
         assertArrayEquals(expected, actual);

@@ -26,30 +26,24 @@ public class PosterManager {
 
     // вывести фильмы в обратном порядке
     public MoviesItem[] getLast() {
-        int resultsLenght;
-        if (items.length != count) {
-            resultsLenght = count;
+        int resultlenght;
+        if (count != 0 & count < items.length) {
+            resultlenght = count;
         } else {
-            resultsLenght = items.length;
+            resultlenght = items.length;
         }
-        MoviesItem[] results = new MoviesItem[resultsLenght];
-        for (int i = 0; i < resultsLenght; i++) {
-            int index = items.length - i - 1;
-            results[i] = items[index];
+        MoviesItem[] result = new MoviesItem[resultlenght];
+        for (int i = 0; i < resultlenght; i++) {
+            if (count != 0 & count < items.length) {
+                int index = resultlenght - i;
+                result[i] = items[index];
+
+            } else {
+                int index = resultlenght - i - 1;
+                result[i] = items[index];
+            }
         }
-        return results;
+        return result;
     }
 
-    //удаление фильма
-    public void decreasePoster(int newLenght) {
-        int lenght = newLenght;
-        int index = 0;
-        MoviesItem[] tmp = new MoviesItem[lenght];
-        for (int i = 0; i < tmp.length; i++) {
-            tmp[i] = items[index];
-            index++;
-        }
-        items = tmp;
-        count = tmp.length;
-    }
 }
